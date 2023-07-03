@@ -13,6 +13,10 @@ class DataBase():
         version = self.cursor.fetchone()
         print("La version es", version)
 
-    def createTable(self, tableName):
-        pass
+    def createTable(self, table):
+        self.cursor.execute("drop database kgptalkie")
+        self.cursor.execute("create database kgptalkie")
+        self.cursor.connection.commit()
+        self.cursor.execute("use database kgptalkie")
+        self.cursor.execute(table)
     
