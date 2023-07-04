@@ -12,6 +12,7 @@ class DataBase():
         self.cursor.execute("select version()")
         version = self.cursor.fetchone()
         print("La version es", version)
+
     def instanceDataBase(self):
         try:
             self.cursor.execute("create database kgptalkie")
@@ -20,9 +21,11 @@ class DataBase():
             self.cursor.execute("create database kgptalkie")
         finally:
             self.cursor.connection.commit()
-            self.cursor.execute("use kgptalkie")
-    def createTable(self, table):
-        
+
+    def useDataBase(self):
+        self.cursor.execute("use kgptalkie")
+
+    def createTable(self, table):  
         self.cursor.execute(table.createCode)
         print("Tabla creada con exito")
     
@@ -59,7 +62,7 @@ if __name__ == "__main__":
     pacientes.addTextVar("correo")
     pacientes.addIntVar("edad")
     pacientes.create()
-    dbs.instanceDataBase()
+    dbs.useDataBase()
     dbs.createTable(pacientes)
     dbs.insertData("Pacientes", "Octavio", "Gauto","gmail", 30)
     print(dbs.getTable("Pacientes"))

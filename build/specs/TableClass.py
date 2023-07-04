@@ -42,3 +42,4 @@ if __name__ == "__main__":
     pacientes.importVar(("Octa", "Gauto", 20), ("Ambar", "Vera", 22))
     print(pacientes)
     print(getColumn(pacientes.content,2))
+    print(TableToList(pacientes.content))
