@@ -51,6 +51,7 @@ class DataBase():
         self.cursor.execute(code)
         self.db.commit()
         print("Datos introducidos correctamente")
+        
 
 
 
@@ -63,8 +64,8 @@ if __name__ == "__main__":
     pacientes.addIntVar("edad")
     pacientes.create()
     dbs.useDataBase()
-    dbs.createTable(pacientes)
-    dbs.insertData("Pacientes", "Octavio", "Gauto","gmail", 30)
+    #dbs.createTable(pacientes)
+    dbs.insertData("Pacientes", "Ambar", "Gauto","gmail", 20)
     print(dbs.getTable("Pacientes"))
     pacientes.importVar(dbs.getTable("Pacientes"))
     print(pacientes)

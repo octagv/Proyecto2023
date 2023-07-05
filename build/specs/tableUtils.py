@@ -1,4 +1,5 @@
 from collections import deque
+import pandas as pd
 def getRow(table, numRow):
     exitList = []
     index = len(table[0])
@@ -22,5 +23,21 @@ def TableToList(table):
     for i in range(columns):
         exit.popleft()
     return list(exit)
+
+def TableToDataFrame(table):
+    return pd.DataFrame(table)
+
+def DataFrameToTable(dataframe):
+    table = []
+    for i in range(dataframe.index[-1]+1):
+        row_list = dataframe.loc[i, :].values.flatten().tolist()
+        table.append(row_list)
+    return table
+
+if __name__ == "__main__":
+     df = pd.DataFrame([["A","B","C"], [1,2,3], ["A","B","C"], [1,2,3]])
+
+     print(DataFrameToTable(df))
+
 
 
